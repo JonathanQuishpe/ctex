@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    Titulo resultante
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-item>
+    <ion-label position="floating">Sistema</ion-label>
+    <ion-select (ionChange)="updateOptions($event)" [(ngModel)]="system" placeholder="Selecciona" okText="Aceptar"
+      cancelText="Cancelar">
+      <ion-select-option value="d">Directo</ion-select-option>
+      <ion-select-option value="i">Indirecto</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-row>
+    <ion-col size="12">
+      <ion-row *ngFor="let dynamic of dynamicArray; let i = index;">
+        <ion-col size="4">
+          <ion-label position="floating">Valor</ion-label>
+          <ion-input [(ngModel)]="dynamicArray[i].value" min="0" placeholder="0.0000" type="number" inputmode="decimal">
+          </ion-input>
+        </ion-col>
+        <ion-col size="6">
+          <ion-label position="floating">Tipo</ion-label>
+          <ion-select [(ngModel)]="dynamicArray[i].type" placeholder="Selecciona" okText="Aceptar"
+            cancelText="Cancelar">
+            <ion-select-option *ngFor="let op of options" value="{{op.value}}">
+              {{ op.label }}
+            </ion-select-option>
+          </ion-select>
+        </ion-col>
+        <ion-col size="2">
+          <ion-button (click)="deleteRow(i)">
+            <ion-icon name="trash-outline" size="lg"></ion-icon>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-button (click)="addRow()">
+            <ion-icon name="add" size="lg"></ion-icon>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-col>
+  </ion-row>
+  <ion-button expand="block" type="button" (click)="save()">
+    Calcular
+  </ion-button>
+  <ion-list>
+    <ion-item>
+      <ion-label>
+        <h3>Resultado: </h3>
+        <p class="ion-text-wrap">
+          {{ this.result }}
+        </p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

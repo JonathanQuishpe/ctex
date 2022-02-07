@@ -1,0 +1,87 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    Titulación
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form [formGroup]="fb" (ngSubmit)="save()">
+    <ion-item>
+      <ion-label position="floating">Peso
+      </ion-label>
+      <ion-input formControlName="weight" min="0" placeholder="0.0000" type="number" inputmode="decimal">
+      </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Unidad medida</ion-label>
+      <ion-select formControlName="unit_weight" placeholder="Selecciona" okText="Aceptar" cancelText="Cancelar">
+        <ion-select-option value="g">Gramos</ion-select-option>
+        <ion-select-option value="lb">Libras</ion-select-option>
+        <ion-select-option value="kg">Kilogramos</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Longitud</ion-label>
+      <ion-input formControlName="length" min="0" placeholder="0.0000" type="number" inputmode="decimal">
+      </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Unidad medida</ion-label>
+      <ion-select formControlName="unit_length" placeholder="Selecciona" okText="Aceptar" cancelText="Cancelar">
+        <ion-select-option value="cm">Centimetros</ion-select-option>
+        <ion-select-option value="in">Pulgadas</ion-select-option>
+        <ion-select-option value="yd">Yardas</ion-select-option>
+        <ion-select-option value="m">Metros</ion-select-option>
+        <ion-select-option value="km">Kilometros</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-button expand="block" type="submit" routerDirection="root" [disabled]="fb.invalid">
+      Calcular
+    </ion-button>
+  </form>
+  <ion-list *ngIf="calculation">
+    <ion-item>
+      <ion-label>
+        <h3>Tex: </h3>
+        <p class="ion-text-wrap">
+          {{ this.tex }}
+        </p>
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        <h3>Dtex: </h3>
+        <p class="ion-text-wrap">
+          {{ this.dtex }}
+        </p>
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        <h3>Den: </h3>
+        <p class="ion-text-wrap">
+          {{ this.den }}
+        </p>
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        <h3>Ne: </h3>
+        <p class="ion-text-wrap">
+          1/{{ this.ne }}
+        </p>
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        <h3>Nm: </h3>
+        <p class="ion-text-wrap">
+          {{ this.nm }}/1
+        </p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

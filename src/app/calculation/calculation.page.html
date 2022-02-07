@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    Cálculo gramo metro
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form [formGroup]="fb" (ngSubmit)="save()">
+    <ion-item>
+      <ion-label position="floating">Titulo
+      </ion-label>
+      <ion-input formControlName="title" min="0" placeholder="0.0000" type="number" inputmode="decimal">
+      </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Tipo</ion-label>
+      <ion-select formControlName="type" placeholder="Selecciona" okText="Aceptar" cancelText="Cancelar">
+        <ion-select-option value="tex">Tex</ion-select-option>
+        <ion-select-option value="ktex">Kilotex</ion-select-option>
+        <ion-select-option value="den">Den</ion-select-option>
+        <ion-select-option value="ne">Ne</ion-select-option>
+        <ion-select-option value="nm">Nm</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Resultado</ion-label>
+      <ion-input formControlName="result">
+      </ion-input>
+    </ion-item>
+    <ion-button expand="block" type="submit" routerDirection="root" [disabled]="fb.invalid">
+      Calcular
+    </ion-button>
+  </form>
+
+</ion-content>

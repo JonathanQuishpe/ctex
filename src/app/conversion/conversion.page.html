@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    Conversión titulos
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form [formGroup]="fb" (ngSubmit)="convert()">
+    <ion-item>
+      <ion-label position="floating">Valor
+      </ion-label>
+      <ion-input formControlName="value" min="0" placeholder="0.0000" type="number" inputmode="decimal">
+      </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">De</ion-label>
+      <ion-select (ionChange)="onChange()" formControlName="from" placeholder="Selecciona" okText="Aceptar"
+        cancelText="Cancelar">
+        <ion-select-option value="tex">Tex</ion-select-option>
+        <ion-select-option value="den">Den</ion-select-option>
+        <ion-select-option value="ne">Ne</ion-select-option>
+        <ion-select-option value="nm">Nm</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">A</ion-label>
+      <ion-select (ionChange)="onChange()" formControlName="to" placeholder="Selecciona" okText="Aceptar"
+        cancelText="Cancelar">
+        <ion-select-option value="tex">Tex</ion-select-option>
+        <ion-select-option value="den">Den</ion-select-option>
+        <ion-select-option value="ne">Ne</ion-select-option>
+        <ion-select-option value="nm">Nm</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-button expand="block" type="submit" routerDirection="root" [disabled]="fb.invalid">
+      Convertir
+    </ion-button>
+  </form>
+  <ion-list>
+    <ion-item>
+      <ion-label>
+        <h3>Resultado: </h3>
+        <p class="ion-text-wrap">
+          {{ this.result }}
+        </p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

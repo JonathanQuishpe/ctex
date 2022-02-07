@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-grid>
+    <h1>Selecciona una opción</h1>
+    <ion-row>
+      <ion-col size="12">
+        <ion-button expand="block" type="button" [routerLink]="['/title']">
+          Titulación
+        </ion-button>
+      </ion-col>
+      <ion-col size="12">
+        <ion-button expand="block" type="button" [routerLink]="['/calculation']">
+          Cálculo gramo metro
+        </ion-button>
+      </ion-col>
+      <ion-col size="12">
+        <ion-button expand="block" type="button" [routerLink]="['/conversion']">
+          Conversión titulos
+        </ion-button>
+      </ion-col>
+      <ion-col size="12">
+        <ion-button expand="block" type="button" [routerLink]="['/resulting']">
+          Titulo resultante
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
